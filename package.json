@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/Strxng/projeto-integrador-pw2/issues"
   },
-  "homepage": "https://github.com/Strxng/projeto-integrador-pw2#readme"
+  "homepage": "https://github.com/Strxng/projeto-integrador-pw2#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.16"
+  }
 }
