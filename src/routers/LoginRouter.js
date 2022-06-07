@@ -3,13 +3,13 @@ module.exports = class LoginRouter {
     this.authUseCase = authUseCase
   }
 
-  route (req, res) {
+  async route (req, res) {
     try {
       const { email, password } = req.body
-      const accessToken = this.authUseCase.auth(email, password)
-      res.send(accessToken)
+      const response = await this.authUseCase.auth(email, password)
+      res.send({ ...response })
     } catch (error) {
-      res.json({ error: error.message })
+      res.status(400).json({ error: error.message })
     }
   }
 }
