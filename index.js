@@ -9,5 +9,5 @@ setupApp(app)
 app.use(routes)
 
 app.listen(process.env.PORT, () => {
-  console.log(`Server running in http://localhost:${process.env.PORT}`);
+  console.log(`Server running in http://localhost:${process.env.PORT}`)
 })

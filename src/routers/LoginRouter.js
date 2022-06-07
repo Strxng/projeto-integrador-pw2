@@ -1,14 +1,14 @@
 module.exports = class LoginRouter {
-  constructor({ authUseCase } = {}){
+  constructor ({ authUseCase } = {}) {
     this.authUseCase = authUseCase
   }
 
-  route(req, res){
-    try{
+  route (req, res) {
+    try {
       const { email, password } = req.body
       const accessToken = this.authUseCase.auth(email, password)
       res.send(accessToken)
-    } catch (error){
+    } catch (error) {
       res.json({ error: error.message })
     }
   }
