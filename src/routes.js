@@ -4,6 +4,7 @@ const LoginRouterCompose = require('./composies/LoginRouterCompose')
 const SignUpRouterCompose = require('./composies/SignUpRouterCompose')
 const UfsRouterCompose = require('./composies/UfsRouterCompose')
 const CitiesRouterCompose = require('./composies/CitiesRouterCompose')
+const NeighborhoodsRouterCompose = require('./composies/NeighborhoodsRouterCompose')
 
 const routes = Router()
 
@@ -22,6 +23,9 @@ routes.get('/ufs', (req, res) => {
 })
 routes.get('/cities/:idState', (req, res) => {
   new CitiesRouterCompose().compose().route(req, res)
+})
+routes.get('/neighborhoods/:idCity', (req, res) => {
+  new NeighborhoodsRouterCompose().compose().route(req, res)
 })
 
 module.exports = routes
