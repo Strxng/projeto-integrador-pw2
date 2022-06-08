@@ -3,7 +3,7 @@ module.exports = class LoadUserByEmailRepository {
     this.dbConnection = dbConnection.getConnection()
   }
 
-  async find (email) {
+  async load (email) {
     const result = await this.dbConnection.query(`  
       SELECT id_user, id_level, name, email, password  
       FROM nursery.users

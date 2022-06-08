@@ -10,7 +10,7 @@ module.exports = class AuthUseCase {
       throw new Error('Preencha todos os campos')
     }
 
-    const user = await this.loadUserByEmailRepository.find(email)
+    const user = await this.loadUserByEmailRepository.load(email)
     if (!user) {
       throw new Error('Usuário ou senha inválidos')
     }
