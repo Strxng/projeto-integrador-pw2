@@ -1,9 +1,14 @@
 module.exports = class UfsRouter {
-  constructor ({ getUfsRepository } = {}) {
-    this.getUfsRepository = getUfsRepository
+  constructor ({ cityDetailsUseCase } = {}) {
+    this.cityDetailsUseCase = cityDetailsUseCase
   }
 
   async route (req, res) {
-    res.send('tudo ok')
+    try {
+      const ufs = await this.cityDetailsUseCase.getUfs()
+      res.send(ufs)
+    } catch (error) {
+      res.status(400).json({ error: error.message })
+    }
   }
 }
