@@ -2,7 +2,7 @@ const { Router } = require('express')
 // const authValidation = require('./config/middlewares/authValidation')
 const LoginRouterCompose = require('./composies/LoginRouterCompose')
 const SignUpRouterCompose = require('./composies/SignUpRouterCompose')
-const HomeRouterCompose = require('./composies/HomeRouterCompose')
+const UfsRouterCompose = require('./composies/UfsRouterCompose')
 
 const routes = Router()
 
@@ -16,8 +16,8 @@ routes.post('/login', (req, res) => {
 routes.post('/signup', (req, res) => {
   new SignUpRouterCompose().compose().route(req, res)
 })
-routes.get('/home', (req, res) => {
-  new HomeRouterCompose().compose().route(req, res)
+routes.get('/ufs', (req, res) => {
+  new UfsRouterCompose().compose().route(req, res)
 })
 
 module.exports = routes
