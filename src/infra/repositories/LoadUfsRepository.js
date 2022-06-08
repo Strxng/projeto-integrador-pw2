@@ -12,7 +12,6 @@ module.exports = class LoadUfsRepository {
       type: this.dbConnection.QueryTypes.SELECT
     })
 
-    console.log(result)
-    return false
+    return result.length > 0 ? result : null
   }
 }

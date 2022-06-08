@@ -3,6 +3,7 @@ const { Router } = require('express')
 const LoginRouterCompose = require('./composies/LoginRouterCompose')
 const SignUpRouterCompose = require('./composies/SignUpRouterCompose')
 const UfsRouterCompose = require('./composies/UfsRouterCompose')
+const CitiesRouterCompose = require('./composies/CitiesRouterCompose')
 
 const routes = Router()
 
@@ -18,6 +19,9 @@ routes.post('/signup', (req, res) => {
 })
 routes.get('/ufs', (req, res) => {
   new UfsRouterCompose().compose().route(req, res)
+})
+routes.get('/cities/:idState', (req, res) => {
+  new CitiesRouterCompose().compose().route(req, res)
 })
 
 module.exports = routes
