@@ -6,7 +6,7 @@ const SignUpUseCase = require('../usecases/SignUpUseCase')
 const AuthTokenGenerator = require('../utils/AuthTokenGenerator')
 const Encrypter = require('../utils/Encrypter')
 const dateFormat = require('../utils/dateFormat')
-const dbConnection = require('../infra/dbConnection')
+const dbConnection = require('../infra/DbConnection')
 
 module.exports = class SignUpRouterCompose {
   compose () {
