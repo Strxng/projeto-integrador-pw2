@@ -5,13 +5,13 @@ const SignUpRouterCompose = require('./composies/SignUpRouterCompose')
 const UfsRouterCompose = require('./composies/UfsRouterCompose')
 const CitiesRouterCompose = require('./composies/CitiesRouterCompose')
 const NeighborhoodsRouterCompose = require('./composies/NeighborhoodsRouterCompose')
+const NurseriesRouterCompose = require('./composies/NurseriesRouterCompose')
 
 const routes = Router()
 
 routes.get('/status', (req, res) => {
   res.send('Online')
 })
-
 routes.post('/login', (req, res) => {
   new LoginRouterCompose().compose().route(req, res)
 })
@@ -26,6 +26,9 @@ routes.get('/cities/:idState', (req, res) => {
 })
 routes.get('/neighborhoods/:idCity', (req, res) => {
   new NeighborhoodsRouterCompose().compose().route(req, res)
+})
+routes.get('/nurseries/:idNeighborhood', (req, res) => {
+  new NurseriesRouterCompose().compose().route(req, res)
 })
 
 module.exports = routes

@@ -1,8 +1,14 @@
 module.exports = class CityDetailsUseCase {
-  constructor ({ loadUfsRepository, loadCitiesByStateRepository, loadNeighborhoodsByCityRepository } = {}) {
+  constructor ({
+    loadUfsRepository,
+    loadCitiesByStateRepository,
+    loadNeighborhoodsByCityRepository,
+    loadNurseriesByNeighborhoodRepository
+  } = {}) {
     this.loadUfsRepository = loadUfsRepository
     this.loadCitiesByStateRepository = loadCitiesByStateRepository
     this.loadNeighborhoodsByCityRepository = loadNeighborhoodsByCityRepository
+    this.loadNurseriesByNeighborhoodRepository = loadNurseriesByNeighborhoodRepository
   }
 
   async getUfs () {
@@ -15,5 +21,9 @@ module.exports = class CityDetailsUseCase {
 
   async getNeighborhoodsByCity (idCity) {
     return await this.loadNeighborhoodsByCityRepository.load(idCity)
+  }
+
+  async getNurseriesByNeighborhoods (idNeighborhood) {
+    return await this.loadNurseriesByNeighborhoodRepository.load(idNeighborhood)
   }
 }
