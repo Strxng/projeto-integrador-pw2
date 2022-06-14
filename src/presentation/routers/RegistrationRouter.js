@@ -6,6 +6,7 @@ module.exports = class RegistrationRouter {
   async route (req, res) {
     try {
       const { idUser } = req.headers
+      const { idVacancy } = req.params
 
       const {
         childrenName,
@@ -17,6 +18,7 @@ module.exports = class RegistrationRouter {
 
       const registration = await this.registrationUseCase.register(
         idUser,
+        idVacancy,
         childrenName,
         childrenBirthdate,
         motherName,
