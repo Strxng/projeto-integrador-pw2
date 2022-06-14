@@ -1,7 +1,7 @@
-const UfsRouter = require('../routers/UfsRouter')
+const UfsRouter = require('../../presentation/routers/UfsRouter')
 const CityDetailsUseCase = require('../usecases/CityDetailsUseCase')
-const LoadUfsRepository = require('../infra/repositories/LoadUfsRepository')
-const dbConnection = require('../infra/DbConnection')
+const LoadUfsRepository = require('../../infra/repositories/LoadUfsRepository')
+const dbConnection = require('../../infra/DbConnection')
 
 module.exports = class UfsRouterCompose {
   compose () {

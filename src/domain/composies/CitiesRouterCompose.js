@@ -1,7 +1,7 @@
-const CitiesRouter = require('../routers/CitiesRouter')
+const CitiesRouter = require('../../presentation/routers/CitiesRouter')
 const CityDetailsUseCase = require('../usecases/CityDetailsUseCase')
-const LoadCitiesByStateRepository = require('../infra/repositories/LoadCitiesByStateRepository')
-const dbConnection = require('../infra/DbConnection')
+const LoadCitiesByStateRepository = require('../../infra/repositories/LoadCitiesByStateRepository')
+const dbConnection = require('../../infra/DbConnection')
 
 module.exports = class CitiesRouterCompose {
   compose () {

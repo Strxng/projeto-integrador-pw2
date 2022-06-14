@@ -1,11 +1,11 @@
 const { Router } = require('express')
 // const authValidation = require('./config/middlewares/authValidation')
-const LoginRouterCompose = require('./composies/LoginRouterCompose')
-const SignUpRouterCompose = require('./composies/SignUpRouterCompose')
-const UfsRouterCompose = require('./composies/UfsRouterCompose')
-const CitiesRouterCompose = require('./composies/CitiesRouterCompose')
-const NeighborhoodsRouterCompose = require('./composies/NeighborhoodsRouterCompose')
-const NurseriesRouterCompose = require('./composies/NurseriesRouterCompose')
+const LoginRouterCompose = require('../domain/composies/LoginRouterCompose')
+const SignUpRouterCompose = require('../domain/composies/SignUpRouterCompose')
+const UfsRouterCompose = require('../domain/composies/UfsRouterCompose')
+const CitiesRouterCompose = require('../domain/composies/CitiesRouterCompose')
+const NeighborhoodsRouterCompose = require('../domain/composies/NeighborhoodsRouterCompose')
+const NurseriesRouterCompose = require('../domain/composies/NurseriesRouterCompose')
 
 const routes = Router()
 

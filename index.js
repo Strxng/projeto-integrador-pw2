@@ -1,7 +1,7 @@
 require('dotenv/config')
 const Express = require('express')
 const setupApp = require('./src/config/setupApp')
-const routes = require('./src/routes')
+const routes = require('./src/presentation/routes')
 const dbConnection = require('./src/infra/DbConnection')
 
 const app = Express()
