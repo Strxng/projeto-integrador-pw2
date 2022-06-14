@@ -1,5 +1,5 @@
 module.exports = class LoadNurseryByIdRepository {
-  constructor ({ dbConnection }) {
+  constructor ({ dbConnection } = {}) {
     this.dbConnection = dbConnection.getConnection()
   }
 
