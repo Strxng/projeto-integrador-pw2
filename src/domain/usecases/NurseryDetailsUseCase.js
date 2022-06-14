@@ -4,7 +4,7 @@ module.exports = class NurseryDetailsUseCase {
     loadNurseryByIdRepository,
     loadDirectorByIdNurseryRepository,
     loadVacanciesByIdNurseryRepository
-  }) {
+  } = {}) {
     this.loadAddressByIdNurseryRepository = loadAddressByIdNurseryRepository
     this.loadNurseryByIdRepository = loadNurseryByIdRepository
     this.loadDirectorByIdNurseryRepository = loadDirectorByIdNurseryRepository

@@ -1,5 +1,5 @@
 module.exports = class NurseryDetailRouter {
-  constructor ({ nurseryDetailsUseCase }) {
+  constructor ({ nurseryDetailsUseCase } = {}) {
     this.nurseryDetailsUseCase = nurseryDetailsUseCase
   }
 
