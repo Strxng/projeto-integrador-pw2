@@ -1,11 +1,10 @@
 const jwt = require('jsonwebtoken')
 
-module.exports = (req, res, next) => {
+module.exports = async (req, res, next) => {
   const { authorization } = req.headers
-  if (authorization) {
-    const payload = jwt.decode(authorization, process.env.TOKEN_AUTH)
-    req.headers = { ...req.headers, ...payload }
-  }
+  if (!authorization) res.status(400).json({ error: 'Nenhum usuário logado' })
 
+  const payload = jwt.decode(authorization, process.env.TOKEN_AUTH)
+  req.headers = { ...req.headers, ...payload }
   next()
 }

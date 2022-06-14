@@ -1,5 +1,5 @@
 const { Router } = require('express')
-// const authValidation = require('./config/middlewares/authValidation')
+const authValidation = require('../config/middlewares/authValidation')
 const LoginRouterCompose = require('../domain/composies/LoginRouterCompose')
 const SignUpRouterCompose = require('../domain/composies/SignUpRouterCompose')
 const UfsRouterCompose = require('../domain/composies/UfsRouterCompose')
@@ -7,6 +7,7 @@ const CitiesRouterCompose = require('../domain/composies/CitiesRouterCompose')
 const NeighborhoodsRouterCompose = require('../domain/composies/NeighborhoodsRouterCompose')
 const NurseriesRouterCompose = require('../domain/composies/NurseriesRouterCompose')
 const NurseryDetailRouterCompose = require('../domain/composies/NurseryDetailRouterCompose')
+const RegistrationRouterCompose = require('../domain/composies/RegistrationRouterCompose')
 
 const routes = Router()
 
@@ -33,6 +34,9 @@ routes.get('/neighborhoods/:idNeighborhood/nurseries', (req, res) => {
 })
 routes.get('/nurseries/:idNursery', (req, res) => {
   new NurseryDetailRouterCompose().compose().route(req, res)
+})
+routes.post('/nurseries/:idNursery/vacancies/:idVacancy/registration', authValidation, (req, res) => {
+  new RegistrationRouterCompose().compose().route(req, res)
 })
 
 module.exports = routes
