@@ -6,6 +6,7 @@ const UfsRouterCompose = require('../domain/composies/UfsRouterCompose')
 const CitiesRouterCompose = require('../domain/composies/CitiesRouterCompose')
 const NeighborhoodsRouterCompose = require('../domain/composies/NeighborhoodsRouterCompose')
 const NurseriesRouterCompose = require('../domain/composies/NurseriesRouterCompose')
+const NurseryDetailRouterCompose = require('../domain/composies/NurseryDetailRouterCompose')
 
 const routes = Router()
 
@@ -21,14 +22,17 @@ routes.post('/signup', (req, res) => {
 routes.get('/ufs', (req, res) => {
   new UfsRouterCompose().compose().route(req, res)
 })
-routes.get('/cities/:idState', (req, res) => {
+routes.get('/ufs/:idState/cities', (req, res) => {
   new CitiesRouterCompose().compose().route(req, res)
 })
-routes.get('/neighborhoods/:idCity', (req, res) => {
+routes.get('/cities/:idCity/neighborhoods', (req, res) => {
   new NeighborhoodsRouterCompose().compose().route(req, res)
 })
-routes.get('/nurseries/:idNeighborhood', (req, res) => {
+routes.get('/neighborhoods/:idNeighborhood/nurseries', (req, res) => {
   new NurseriesRouterCompose().compose().route(req, res)
+})
+routes.get('/nurseries/:idNursery', (req, res) => {
+  new NurseryDetailRouterCompose().compose().route(req, res)
 })
 
 module.exports = routes
