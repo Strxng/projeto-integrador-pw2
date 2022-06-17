@@ -1,6 +1,6 @@
 module.exports = class InsertUserRepository {
   constructor ({ dbConnection } = {}) {
-    this.dbConnection = dbConnection.getConnection()
+    this.dbConnection = dbConnection
   }
 
   async insert (user, idAddress) {
@@ -9,20 +9,13 @@ module.exports = class InsertUserRepository {
     user.createdAt = new Date()
     user.updatedAt = new Date()
 
-    const result = await this.dbConnection.query(`  
+    return await this.dbConnection.insert(`  
       INSERT INTO nursery.users 
         (id_level, id_address, name, birthdate, phone, cpf, rg, email, password, image, created_at, updated_at)
       OUTPUT INSERTED.*
       VALUES
         (:idLevel, :idAddress, :name, :birthdate, :phone, :cpf, :rg, :email, :password, :image, :createdAt, :updatedAt)
     `,
-    {
-      replacements: {
-        ...user
-      },
-      type: this.dbConnection.QueryTypes.INSERT
-    })
-
-    return result[0].length > 0 ? result[0][0] : null
+    { user })
   }
 }
