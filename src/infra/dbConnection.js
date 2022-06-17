@@ -15,5 +15,35 @@ module.exports = {
 
   getConnection () {
     return this.sequelize
+  },
+
+  async insert (query, params) {
+    const result = await this.sequelize.query(query,
+      {
+        replacements: params,
+        type: this.sequelize.QueryTypes.INSERT
+      })
+
+    return result[0].length > 0 ? result[0][0] : null
+  },
+
+  async selectOne (query, params) {
+    const result = await this.sequelize.query(query,
+      {
+        replacements: params,
+        type: this.sequelize.QueryTypes.SELECT
+      })
+
+    return result.length > 0 ? result[0] : null
+  },
+
+  async selectList (query, params) {
+    const result = await this.sequelize.query(query,
+      {
+        replacements: params,
+        type: this.sequelize.QueryTypes.SELECT
+      })
+
+    return result.length > 0 ? result : null
   }
 }
