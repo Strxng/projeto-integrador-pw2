@@ -1,10 +1,10 @@
 module.exports = class LoadAddressByIdNurseryRepository {
   constructor ({ dbConnection } = {}) {
-    this.dbConnection = dbConnection.getConnection()
+    this.dbConnection = dbConnection
   }
 
   async load (idNursery) {
-    const result = await this.dbConnection.query(`  
+    return await this.dbConnection.selectOne(`  
       select
         adresses.id_address,
         adresses.postal_code,
@@ -16,11 +16,6 @@ module.exports = class LoadAddressByIdNurseryRepository {
       on adresses.id_address = nurseries.id_address
       where id_nursery = :idNursery
     `,
-    {
-      replacements: { idNursery },
-      type: this.dbConnection.QueryTypes.SELECT
-    })
-
-    return result.length > 0 ? result[0] : null
+    { idNursery })
   }
 }

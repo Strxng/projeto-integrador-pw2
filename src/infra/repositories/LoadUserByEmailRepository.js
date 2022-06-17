@@ -1,19 +1,14 @@
 module.exports = class LoadUserByEmailRepository {
   constructor ({ dbConnection } = {}) {
-    this.dbConnection = dbConnection.getConnection()
+    this.dbConnection = dbConnection
   }
 
   async load (email) {
-    const result = await this.dbConnection.query(`  
+    return await this.dbConnection.selectOne(`  
       SELECT id_user, id_level, name, email, password  
       FROM nursery.users
       WHERE email = :email
     `,
-    {
-      replacements: { email },
-      type: this.dbConnection.QueryTypes.SELECT
-    })
-
-    return result.length > 0 ? result[0] : null
+    { email })
   }
 }

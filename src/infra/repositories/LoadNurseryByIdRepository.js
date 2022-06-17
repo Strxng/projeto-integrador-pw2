@@ -1,10 +1,10 @@
 module.exports = class LoadNurseryByIdRepository {
   constructor ({ dbConnection } = {}) {
-    this.dbConnection = dbConnection.getConnection()
+    this.dbConnection = dbConnection
   }
 
   async load (idNursery) {
-    const result = await this.dbConnection.query(`  
+    return await this.dbConnection.selectOne(`  
         select
           nurseries.id_nursery,
           nurseries.name,
@@ -14,11 +14,6 @@ module.exports = class LoadNurseryByIdRepository {
         from nursery.nurseries
         where id_nursery = :idNursery
     `,
-    {
-      replacements: { idNursery },
-      type: this.dbConnection.QueryTypes.SELECT
-    })
-
-    return result.length > 0 ? result[0] : null
+    { idNursery })
   }
 }
