@@ -11,6 +11,7 @@ const RegistrationRouterCompose = require('../domain/composies/RegistrationRoute
 const ProfileRouterCompose = require('../domain/composies/ProfileRouterCompose')
 const ChangePasswordRouterCompose = require('../domain/composies/ChangePasswordRouterCompose')
 const UserRegistrationsRouterCompose = require('../domain/composies/UserRegistrationsRouterCompose')
+const VacanciesRouterCompose = require('../domain/composies/VacanciesRouterCompose')
 
 const routes = Router()
 
@@ -49,6 +50,9 @@ routes.post('/changePassword', authValidation, (req, res) => {
 })
 routes.get('/registrations', authValidation, (req, res) => {
   new UserRegistrationsRouterCompose().compose().route(req, res)
+})
+routes.get('/vacancies', authValidation, (req, res) => {
+  new VacanciesRouterCompose().compose().route(req, res)
 })
 
 module.exports = routes

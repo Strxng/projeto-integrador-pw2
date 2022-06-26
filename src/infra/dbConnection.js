@@ -17,7 +17,7 @@ module.exports = {
     return this.sequelize
   },
 
-  async insert (query, params) {
+  async insert (query, params = {}) {
     const result = await this.sequelize.query(query,
       {
         replacements: params,
@@ -27,7 +27,7 @@ module.exports = {
     return result[0].length > 0 ? result[0][0] : null
   },
 
-  async selectOne (query, params) {
+  async selectOne (query, params = {}) {
     const result = await this.sequelize.query(query,
       {
         replacements: params,
@@ -37,7 +37,7 @@ module.exports = {
     return result.length > 0 ? result[0] : null
   },
 
-  async selectList (query, params) {
+  async selectList (query, params = {}) {
     const result = await this.sequelize.query(query,
       {
         replacements: params,
@@ -47,7 +47,7 @@ module.exports = {
     return result.length > 0 ? result : null
   },
 
-  async update (query, params) {
+  async update (query, params = {}) {
     return await this.sequelize.query(query,
       {
         replacements: params,

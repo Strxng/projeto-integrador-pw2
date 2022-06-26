@@ -8,7 +8,7 @@ module.exports = class UserRegistrationsRouter {
     try {
       const { idUser, idLevel } = req.headers
 
-      if (toString(idLevel) === toString(process.env.ID_LEVEL_DIRECTOR)) {
+      if (idLevel.toString() === process.env.ID_LEVEL_DIRECTOR) {
         const registrations = await this.directorRegistrationsUseCase.load(idUser)
         res.send(registrations)
       } else {
