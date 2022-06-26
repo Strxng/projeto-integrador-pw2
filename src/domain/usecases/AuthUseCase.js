@@ -6,10 +6,6 @@ module.exports = class AuthUseCase {
   }
 
   async auth (email, password) {
-    if (!email || !password) {
-      throw new Error('Preencha todos os campos')
-    }
-
     const user = await this.loadUserByEmailRepository.load(email)
     if (!user) {
       throw new Error('Usuário ou senha inválidos')

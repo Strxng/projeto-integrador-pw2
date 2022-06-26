@@ -9,6 +9,7 @@ const NurseriesRouterCompose = require('../domain/composies/NurseriesRouterCompo
 const NurseryDetailRouterCompose = require('../domain/composies/NurseryDetailRouterCompose')
 const RegistrationRouterCompose = require('../domain/composies/RegistrationRouterCompose')
 const ProfileRouterCompose = require('../domain/composies/ProfileRouterCompose')
+const ChangePasswordRouterCompose = require('../domain/composies/ChangePasswordRouterCompose')
 
 const routes = Router()
 
@@ -41,6 +42,9 @@ routes.post('/nurseries/:idNursery/vacancies/:idVacancy/registration', authValid
 })
 routes.get('/profile', authValidation, (req, res) => {
   new ProfileRouterCompose().compose().route(req, res)
+})
+routes.post('/changePassword', authValidation, (req, res) => {
+  new ChangePasswordRouterCompose().compose().route(req, res)
 })
 
 module.exports = routes

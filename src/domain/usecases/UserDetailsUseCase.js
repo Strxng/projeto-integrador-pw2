@@ -1,10 +1,10 @@
 module.exports = class UserDetailsUseCase {
-  constructor ({ loadUserDetailsByIdUser } = {}) {
-    this.loadUserDetailsByIdUser = loadUserDetailsByIdUser
+  constructor ({ loadUserDetailsByIdUserRepository } = {}) {
+    this.loadUserDetailsByIdUserRepository = loadUserDetailsByIdUserRepository
   }
 
   async getDetails (idUser) {
-    const userDetails = await this.loadUserDetailsByIdUser.load(idUser)
+    const userDetails = await this.loadUserDetailsByIdUserRepository.load(idUser)
     return userDetails
   }
 }

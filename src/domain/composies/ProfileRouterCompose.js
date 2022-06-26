@@ -1,12 +1,12 @@
 const ProfileRouter = require('../../presentation/routers/ProfileRouter')
 const UserDetailsUseCase = require('../usecases/UserDetailsUseCase')
-const LoadUserDetailsByIdUser = require('../../infra/repositories/LoadUserDetailsByIdUser')
+const LoadUserDetailsByIdUserRepository = require('../../infra/repositories/LoadUserDetailsByIdUserRepository')
 const dbConnection = require('../../infra/DbConnection')
 
 module.exports = class ProfileRouterCompose {
   compose () {
-    const loadUserDetailsByIdUser = new LoadUserDetailsByIdUser({ dbConnection })
-    const userDetailsUseCase = new UserDetailsUseCase({ loadUserDetailsByIdUser })
+    const loadUserDetailsByIdUserRepository = new LoadUserDetailsByIdUserRepository({ dbConnection })
+    const userDetailsUseCase = new UserDetailsUseCase({ loadUserDetailsByIdUserRepository })
     return new ProfileRouter({ userDetailsUseCase })
   }
 }

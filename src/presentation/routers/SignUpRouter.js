@@ -6,6 +6,11 @@ module.exports = class SignUpRouter {
   async route (req, res) {
     try {
       const { name, cpf, rg, birthdate, phone, email, password, image, address } = req.body
+
+      if (!name || !cpf || !rg || !birthdate || !phone || !email || !password || !image || !address) {
+        throw new Error('Preencha todos os campos')
+      }
+
       const user = {
         name,
         cpf,
@@ -16,6 +21,7 @@ module.exports = class SignUpRouter {
         password,
         image
       }
+
       const insertedUser = await this.signUpUseCase.signup(user, address)
       const data = {
         idUser: insertedUser.id_user,
@@ -24,6 +30,7 @@ module.exports = class SignUpRouter {
         email: insertedUser.email,
         accessToken: insertedUser.accessToken
       }
+
       res.send(data)
     } catch (error) {
       res.status(400).json({ error: error.message })

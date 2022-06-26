@@ -6,6 +6,11 @@ module.exports = class LoginRouter {
   async route (req, res) {
     try {
       const { email, password } = req.body
+
+      if (!email || !password) {
+        throw new Error('Preencha todos os campos')
+      }
+
       const user = await this.authUseCase.auth(email, password)
       const data = {
         idUser: user.id_user,

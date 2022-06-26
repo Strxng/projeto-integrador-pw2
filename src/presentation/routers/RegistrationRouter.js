@@ -16,6 +16,16 @@ module.exports = class RegistrationRouter {
         information
       } = req.body
 
+      if (
+        !childrenName ||
+        !childrenBirthdate ||
+        !motherName ||
+        !fatherName ||
+        !information
+      ) {
+        throw new Error('Preencha todos os campos')
+      }
+
       const registration = await this.registrationUseCase.register(
         idUser,
         idVacancy,

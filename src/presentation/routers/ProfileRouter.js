@@ -4,8 +4,12 @@ module.exports = class ProfileRouter {
   }
 
   async route (req, res) {
-    const { idUser } = req.headers
-    const userDetails = await this.userDetailsUseCase.getDetails(idUser)
-    res.send(userDetails)
+    try {
+      const { idUser } = req.headers
+      const userDetails = await this.userDetailsUseCase.getDetails(idUser)
+      res.send(userDetails)
+    } catch (error) {
+      res.status(400).json({ error: error.message })
+    }
   }
 }

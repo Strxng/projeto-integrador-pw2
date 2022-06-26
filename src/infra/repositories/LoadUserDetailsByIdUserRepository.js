@@ -1,4 +1,4 @@
-module.exports = class LoadUserDetailsByIdUser {
+module.exports = class loadUserDetailsByIdUserRepository {
   constructor ({ dbConnection } = {}) {
     this.dbConnection = dbConnection
   }
