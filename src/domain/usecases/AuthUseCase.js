@@ -26,7 +26,7 @@ module.exports = class AuthUseCase {
     const accessToken = this.authTokenGenerator.generate(payload)
 
     return {
-      payload,
+      ...payload,
       accessToken
     }
   }
