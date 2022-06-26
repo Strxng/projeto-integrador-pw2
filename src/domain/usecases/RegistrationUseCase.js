@@ -13,7 +13,7 @@ module.exports = class RegistrationUseCase {
     fatherName,
     information
   ) {
-    const status = 'pending'
+    const status = 'pendente'
     childrenBirthdate = this.dateFormat.format(childrenBirthdate, 'DD/MM/YYYY')
     const registration = await this.insertRegistrationRepository.insert({
       idUser,
