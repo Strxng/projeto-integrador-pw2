@@ -6,7 +6,7 @@ module.exports = class LoadNurseriesByNeighborhoodRepository {
   async load (idNeighborhood) {
     return await this.dbConnection.query(`  
       select
-        nurseries.id_nursery,
+        nurseries.id_nursery as idNursery,
         nurseries.name,
         nurseries.cnpj,
         nurseries.image

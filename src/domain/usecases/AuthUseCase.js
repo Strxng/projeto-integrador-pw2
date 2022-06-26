@@ -17,8 +17,8 @@ module.exports = class AuthUseCase {
     }
 
     const payload = {
-      idUser: user.id_user,
-      idLevel: user.id_level,
+      idUser: user.idUser,
+      idLevel: user.idLevel,
       name: user.name,
       email: user.email
     }
@@ -26,7 +26,7 @@ module.exports = class AuthUseCase {
     const accessToken = this.authTokenGenerator.generate(payload)
 
     return {
-      ...user,
+      payload,
       accessToken
     }
   }

@@ -5,7 +5,12 @@ module.exports = class LoadUserByEmailRepository {
 
   async load (email) {
     return await this.dbConnection.selectOne(`  
-      SELECT id_user, id_level, name, email, password  
+      SELECT 
+        id_user as idUser, 
+        id_level as idLevel, 
+        name, 
+        email, 
+        password  
       FROM nursery.users
       WHERE email = :email
     `,

@@ -5,7 +5,10 @@ module.exports = class LoadUfsRepository {
 
   async load () {
     return await this.dbConnection.selectList(`  
-      SELECT id_state, uf, name
+      SELECT 
+        id_state as idState, 
+        uf, 
+        name
       FROM nursery.states
     `)
   }

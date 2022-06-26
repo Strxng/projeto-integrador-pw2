@@ -18,20 +18,21 @@ module.exports = class SignUpUseCase {
     }
 
     const insertedAddress = await this.insertAddressRepository.insert(address)
-    const insertedUser = await this.insertUserRepository.insert(user, insertedAddress.id_address)
+    const insertedUser = await this.insertUserRepository.insert(user, insertedAddress.idAddress)
 
-    delete insertedUser.id_address
+    delete insertedUser.idAddress
     delete insertedUser.password
     insertedUser.address = insertedAddress
 
     const payload = {
-      idUser: insertedUser.id_user,
-      idLevel: insertedUser.id_level,
+      idUser: insertedUser.idUser,
+      idLevel: insertedUser.idLevel,
       name: insertedUser.name,
       email: insertedUser.email
     }
 
-    insertedUser.accessToken = this.authTokenGenerator.generate(payload)
+    const token = this.authTokenGenerator.generate(payload)
+    insertedUser.accessToken = token
 
     return insertedUser
   }

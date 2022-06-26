@@ -23,15 +23,7 @@ module.exports = class SignUpRouter {
       }
 
       const insertedUser = await this.signUpUseCase.signup(user, address)
-      const data = {
-        idUser: insertedUser.id_user,
-        idLevel: insertedUser.id_level,
-        name: insertedUser.name,
-        email: insertedUser.email,
-        accessToken: insertedUser.accessToken
-      }
-
-      res.send(data)
+      res.send(insertedUser)
     } catch (error) {
       res.status(400).json({ error: error.message })
     }

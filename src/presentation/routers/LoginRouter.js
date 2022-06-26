@@ -12,14 +12,7 @@ module.exports = class LoginRouter {
       }
 
       const user = await this.authUseCase.auth(email, password)
-      const data = {
-        idUser: user.id_user,
-        idLevel: user.id_level,
-        name: user.name,
-        email: user.email,
-        accessToken: user.accessToken
-      }
-      res.send(data)
+      res.send(user)
     } catch (error) {
       res.status(400).json({ error: error.message })
     }

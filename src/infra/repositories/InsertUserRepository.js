@@ -12,7 +12,19 @@ module.exports = class InsertUserRepository {
     return await this.dbConnection.insert(`  
       INSERT INTO nursery.users 
         (id_level, id_address, name, birthdate, phone, cpf, rg, email, password, image, created_at, updated_at)
-      OUTPUT INSERTED.*
+      OUTPUT
+        INSERTED.id_level as idLevel,
+        INSERTED.id_address as idAddress,
+        INSERTED.name,
+        INSERTED.birthdate,
+        INSERTED.phone,
+        INSERTED.cpf,
+        INSERTED.rg,
+        INSERTED.email,
+        INSERTED.password,
+        INSERTED.image,
+        INSERTED.created_at as createdAt,
+        INSERTED.updated_at as updatedAt
       VALUES
         (:idLevel, :idAddress, :name, :birthdate, :phone, :cpf, :rg, :email, :password, :image, :createdAt, :updatedAt)
     `, user)

@@ -6,7 +6,7 @@ module.exports = class LoadVacanciesByIdNurseryRepository {
   async load (idNursery) {
     return await this.dbConnection.selectList(`  
       select
-        vacancies.id_vacancy,
+        vacancies.id_vacancy as idVacancy,
         vacancies.amount,
         vacancies.description,
         vacancies.class

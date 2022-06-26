@@ -6,11 +6,11 @@ module.exports = class LoadNurseryByIdRepository {
   async load (idNursery) {
     return await this.dbConnection.selectOne(`  
         select
-          nurseries.id_nursery,
+          nurseries.id_nursery as idNursery,
           nurseries.name,
           nurseries.cnpj,
           nurseries.image,
-          nurseries.created_at
+          nurseries.created_at as createdAt
         from nursery.nurseries
         where id_nursery = :idNursery
     `,

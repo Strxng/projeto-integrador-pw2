@@ -6,8 +6,8 @@ module.exports = class LoadAddressByIdNurseryRepository {
   async load (idNursery) {
     return await this.dbConnection.selectOne(`  
       select
-        adresses.id_address,
-        adresses.postal_code,
+        adresses.id_address as idAddress,
+        adresses.postal_code as postalCode,
         adresses.street,
         adresses.number,
         adresses.complement
