@@ -8,6 +8,7 @@ const NeighborhoodsRouterCompose = require('../domain/composies/NeighborhoodsRou
 const NurseriesRouterCompose = require('../domain/composies/NurseriesRouterCompose')
 const NurseryDetailRouterCompose = require('../domain/composies/NurseryDetailRouterCompose')
 const RegistrationRouterCompose = require('../domain/composies/RegistrationRouterCompose')
+const ProfileRouterCompose = require('../domain/composies/ProfileRouterCompose')
 
 const routes = Router()
 
@@ -37,6 +38,9 @@ routes.get('/nurseries/:idNursery', (req, res) => {
 })
 routes.post('/nurseries/:idNursery/vacancies/:idVacancy/registration', authValidation, (req, res) => {
   new RegistrationRouterCompose().compose().route(req, res)
+})
+routes.get('/profile', authValidation, (req, res) => {
+  new ProfileRouterCompose().compose().route(req, res)
 })
 
 module.exports = routes
