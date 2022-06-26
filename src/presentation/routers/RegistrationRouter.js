@@ -26,7 +26,7 @@ module.exports = class RegistrationRouter {
         throw new Error('Preencha todos os campos')
       }
 
-      const registration = await this.registrationUseCase.register(
+      await this.registrationUseCase.register(
         idUser,
         idVacancy,
         childrenName,
@@ -36,7 +36,7 @@ module.exports = class RegistrationRouter {
         information
       )
 
-      res.send(registration)
+      res.send({ message: 'Matricula solicitada com sucesso, consulte as suas matrículas para acompanhar o andamento' })
     } catch (error) {
       res.status(400).json({ error: error.message })
     }
