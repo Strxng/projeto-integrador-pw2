@@ -1,8 +1,15 @@
 module.exports = class RegistrationUseCase {
-  constructor ({ insertRegistrationRepository, dateFormat, loadVacancyByIdRepository, updateVacancyAmountByIdRepository } = {}) {
+  constructor ({
+    insertRegistrationRepository,
+    dateFormat,
+    loadVacancyByIdRepository,
+    updateVacancyAmountByIdRepository,
+    loadRegistrationsByIdUserRepository
+  } = {}) {
     this.insertRegistrationRepository = insertRegistrationRepository
     this.loadVacancyByIdRepository = loadVacancyByIdRepository
     this.updateVacancyAmountByIdRepository = updateVacancyAmountByIdRepository
+    this.loadRegistrationsByIdUserRepository = loadRegistrationsByIdUserRepository
     this.dateFormat = dateFormat
   }
 
@@ -36,5 +43,9 @@ module.exports = class RegistrationUseCase {
 
     const amount = vacancy.amount - 1
     await this.updateVacancyAmountByIdRepository.update(idVacancy, amount)
+  }
+
+  async loadByIdUser (idUser) {
+    return await this.loadRegistrationsByIdUserRepository.load(idUser)
   }
 }
