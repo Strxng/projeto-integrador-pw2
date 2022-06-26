@@ -45,5 +45,13 @@ module.exports = {
       })
 
     return result.length > 0 ? result : null
+  },
+
+  async update (query, params) {
+    return await this.sequelize.query(query,
+      {
+        replacements: params,
+        type: this.sequelize.QueryTypes.UPDATE
+      })
   }
 }

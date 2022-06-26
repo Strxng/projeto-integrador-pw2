@@ -12,8 +12,8 @@ module.exports = class ChangePasswordRouter {
         throw new Error('Preencha todos os campos')
       }
 
-      const result = await this.changePasswordUseCase.change(email, currentPassword, newPassword)
-      res.send(result)
+      await this.changePasswordUseCase.change(email, currentPassword, newPassword)
+      res.send({ message: 'Senha alterada com sucesso' })
     } catch (error) {
       res.status(400).json({ error: error.message })
     }
