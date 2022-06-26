@@ -11,7 +11,8 @@ module.exports = class LoginRouter {
         idUser: user.id_user,
         idLevel: user.id_level,
         name: user.name,
-        email: user.email
+        email: user.email,
+        accessToken: user.accessToken
       }
       res.send(data)
     } catch (error) {
