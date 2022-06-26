@@ -20,7 +20,14 @@ module.exports = class AuthUseCase {
       throw new Error('Usuário ou senha inválidos')
     }
 
-    const accessToken = this.authTokenGenerator.generate({ idUser: user.id_user })
+    const payload = {
+      idUser: user.id_user,
+      idLevel: user.id_level,
+      name: user.name,
+      email: user.email
+    }
+
+    const accessToken = this.authTokenGenerator.generate(payload)
 
     return {
       ...user,
