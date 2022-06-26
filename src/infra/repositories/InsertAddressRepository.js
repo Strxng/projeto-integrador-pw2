@@ -13,7 +13,6 @@ module.exports = class InsertAddressRepository {
       OUTPUT INSERTED.*
       VALUES
         (:idNeighborhood, :postalCode, :street, :number, :complement, :createdAt, :updatedAt)
-    `,
-    { address })
+    `, address)
   }
 }

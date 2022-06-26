@@ -13,7 +13,6 @@ module.exports = class InsertRegistrationRepository {
       OUTPUT INSERTED.*
       VALUES
         (:idUser, :idVacancy, :childrenName, :childrenBirthdate, :fatherName, :motherName, :information, :status, :createdAt, :updatedAt)
-    `,
-    { register })
+    `, register)
   }
 }

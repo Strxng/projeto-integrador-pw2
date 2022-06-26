@@ -15,7 +15,6 @@ module.exports = class InsertUserRepository {
       OUTPUT INSERTED.*
       VALUES
         (:idLevel, :idAddress, :name, :birthdate, :phone, :cpf, :rg, :email, :password, :image, :createdAt, :updatedAt)
-    `,
-    { user })
+    `, user)
   }
 }
