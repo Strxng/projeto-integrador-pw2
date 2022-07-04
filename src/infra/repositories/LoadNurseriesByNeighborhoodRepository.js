@@ -4,12 +4,15 @@ module.exports = class LoadNurseriesByNeighborhoodRepository {
   }
 
   async load (idNeighborhood) {
-    return await this.dbConnection.query(`  
+    return await this.dbConnection.selectList(`  
       select
         nurseries.id_nursery as idNursery,
         nurseries.name,
-        nurseries.cnpj,
-        nurseries.image
+        nurseries.phone,
+        nurseries.image,
+        adresses.street,
+        adresses.number,
+        adresses.complement
       from nursery.nurseries
       inner join nursery.adresses
       on nurseries.id_address = adresses.id_address

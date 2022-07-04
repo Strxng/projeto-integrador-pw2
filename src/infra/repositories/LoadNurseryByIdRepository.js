@@ -10,6 +10,7 @@ module.exports = class LoadNurseryByIdRepository {
           nurseries.name,
           nurseries.cnpj,
           nurseries.image,
+          nurseries.phone,
           nurseries.created_at as createdAt
         from nursery.nurseries
         where id_nursery = :idNursery

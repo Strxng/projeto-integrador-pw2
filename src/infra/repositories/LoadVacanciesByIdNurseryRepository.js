@@ -13,7 +13,8 @@ module.exports = class LoadVacanciesByIdNurseryRepository {
       from nursery.vacancies
       inner join nursery.nurseries
       on vacancies.id_nursery = nurseries.id_nursery
-      where nurseries.id_nursery = :idNursery
+      where vacancies.amount > 0
+      and nurseries.id_nursery = :idNursery
     `,
     { idNursery })
   }
