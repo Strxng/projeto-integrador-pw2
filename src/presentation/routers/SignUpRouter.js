@@ -7,7 +7,7 @@ module.exports = class SignUpRouter {
     try {
       const { name, cpf, rg, birthdate, phone, email, password, image, address } = req.body
 
-      if (!name || !cpf || !rg || !birthdate || !phone || !email || !password || !image || !address) {
+      if (!name || !cpf || !rg || !birthdate || !phone || !email || !password || !address) {
         throw new Error('Preencha todos os campos')
       }
 
@@ -25,6 +25,7 @@ module.exports = class SignUpRouter {
       const insertedUser = await this.signUpUseCase.signup(user, address)
       res.send(insertedUser)
     } catch (error) {
+      console.log(error)
       res.status(400).json({ error: error.message })
     }
   }

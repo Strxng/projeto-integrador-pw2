@@ -7,7 +7,7 @@ module.exports = class loadUserDetailsByIdUserRepository {
     return await this.dbConnection.selectOne(`
       SELECT name, birthdate, email, phone
       FROM nursery.users
-      WHERE id_user = 1
+      WHERE id_user = :idUser
     `, { idUser })
   }
 }

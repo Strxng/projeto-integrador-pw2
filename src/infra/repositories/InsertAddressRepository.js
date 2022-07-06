@@ -11,6 +11,7 @@ module.exports = class InsertAddressRepository {
       INSERT INTO nursery.adresses 
         (id_neighborhood, postal_code, street, number, complement, created_at, updated_at)
       OUTPUT 
+        INSERTED.id_address as idAddress,
         INSERTED.id_neighborhood as idNeighborhood,
         INSERTED.postal_code as postalCode,
         INSERTED.street,

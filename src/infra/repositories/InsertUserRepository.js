@@ -13,6 +13,7 @@ module.exports = class InsertUserRepository {
       INSERT INTO nursery.users 
         (id_level, id_address, name, birthdate, phone, cpf, rg, email, password, image, created_at, updated_at)
       OUTPUT
+        INSERTED.id_user as idUser,
         INSERTED.id_level as idLevel,
         INSERTED.id_address as idAddress,
         INSERTED.name,

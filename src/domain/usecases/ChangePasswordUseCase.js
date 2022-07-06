@@ -16,6 +16,6 @@ module.exports = class changePasswordUseCase {
 
     const encryptedNewPassword = await this.encrypter.crypt(newPassword)
 
-    await this.updateUserPasswordByIdUserRepository.update(user.id_user, encryptedNewPassword)
+    await this.updateUserPasswordByIdUserRepository.update(user.idUser, encryptedNewPassword)
   }
 }
